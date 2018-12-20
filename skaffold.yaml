@@ -1,0 +1,31 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.DOCKER_REGISTRY}}/lanbuithe/rhsso-password-policy:{{.VERSION}}"
+  artifacts:
+  - imageName: changeme
+    workspace: .
+    docker: {}
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+profiles:
+- name: dev
+  build:
+    tagPolicy:
+      envTemplate:
+        template: "{{.DOCKER_REGISTRY}}/lanbuithe/rhsso-password-policy:{{.DIGEST_HEX}}"
+    artifacts:
+    - docker: {}
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: rhsso-password-policy
+        chartPath: charts/rhsso-password-policy
+        setValueTemplates:
+          image.repository: "{{.DOCKER_REGISTRY}}/lanbuithe/rhsso-password-policy"
+          image.tag: "{{.DIGEST_HEX}}"
