@@ -31,6 +31,7 @@ pipeline {
         branch 'master'
       }
       steps {
+	sh "echo MAVEN"
 	container('maven') {
         git 'https://github.com/lanbuithe/rhsso-password-policy.git'
 
