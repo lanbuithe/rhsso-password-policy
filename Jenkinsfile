@@ -32,7 +32,7 @@ pipeline {
       }
       steps {
 	sh "echo MAVEN"
-	container('maven') {
+	//container('maven') {
         git 'https://github.com/lanbuithe/rhsso-password-policy.git'
 
         // so we can retrieve the version in later steps
@@ -42,7 +42,7 @@ pipeline {
 	sh "mvn clean deploy"
         sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
         sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
-	}
+	//}
       }
     }
     stage('Promote to Environments') {
