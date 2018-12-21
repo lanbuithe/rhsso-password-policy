@@ -74,37 +74,4 @@
 		</plugins>
 	</build>
 
-	<repositories>
-        <repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>         
-          <id>central</id>
-          <name>libs-release</name>
-          <url>http://10.145.198.42/nexus/repository/maven-public</url>
-        </repository>
-        <repository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://10.145.198.42/nexus/repository/maven-public</url>
-        </repository>        	
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>libs-release</name>
-          <url>http://10.145.198.42/nexus/repository/maven-public</url>
-        </pluginRepository>
-        <pluginRepository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://10.145.198.42/nexus/repository/maven-public</url>
-        </pluginRepository>        
-	</pluginRepositories>
-
 </project>
